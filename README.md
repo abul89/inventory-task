@@ -20,8 +20,9 @@ composer install
 cp .env.example .env            # Windows: copy .env.example .env
 php artisan key:generate
 
-# SQLite database (default)
-touch database/database.sqlite  # Windows: type nul > database\database.sqlite
+# pgsql
+create database in pgsql
+
 
 php artisan migrate --seed      # creates tables + sample products & customers
 ```
@@ -49,12 +50,13 @@ Tests use an in-memory SQLite database (see `phpunit.xml`), so they don't touch 
 In `.env`:
 
 ```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
+# pgsql
+DB_CONNECTION=pgsql
+DB_HOST=localhost
+DB_PORT=5432
 DB_DATABASE=store_orders
-DB_USERNAME=root
-DB_PASSWORD=
+DB_USERNAME=postgres
+DB_PASSWORD=admin@123
 ```
 
 Then run `php artisan migrate:fresh --seed`.
@@ -280,6 +282,3 @@ Subject: Your order ORD-20261028-K3J9QX is confirmed
 
 ---
 
-## 9. Prompt log
-
-AI-assisted development was used. Screenshots of the prompts are in the [`/prompts`](prompts/) folder.
